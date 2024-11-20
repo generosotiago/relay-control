@@ -1,0 +1,39 @@
+import React, { useState, useEffect } from "react";
+import RelayButton from "./RelayButton";
+import "./RelayControl.css";
+
+const RelayControl = () => {
+  const [isOn, setIsOn] = useState(false);
+  const [websocket, setWebSocket] = useState(null);
+
+  useEffect(() => {
+    const ws = new WebSocket("ws://192.168.68.135:81/");
+    setWebSocket(ws);
+
+    ws.onopen = () => console.log("WebSocket conectado!");
+    ws.onclose = () => console.log("WebSocket desconectado!");
+    ws.onerror = (error) => console.error("Erro no WebSocket:", error);
+
+    return () => ws.close();
+  }, []);
+
+  const handleToggle = () => {
+    if (websocket && websocket.readyState === WebSocket.OPEN) {
+      const message = JSON.stringify({ relay: isOn ? "off" : "on" });
+      websocket.send(message);
+      setIsOn(!isOn);
+    } else {
+      console.error("WebSocket não conectado.");
+    }
+  };
+
+  return (
+    <div className="relay-control">
+      <h1>Controle de Relé</h1>
+      <RelayButton isOn={isOn} onClick={handleToggle} />
+      <p>Status: {isOn ? "Ligado" : "Desligado"}</p>
+    </div>
+  );
+};
+
+export default RelayControl;

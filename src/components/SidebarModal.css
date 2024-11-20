@@ -1,0 +1,78 @@
+.sidebar-modal {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%; /* Ocupa toda a largura */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro translúcido */
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .sidebar-modal.open {
+    right: 0;
+  }
+  
+  .modal-content {
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .checkbox-container label {
+    margin-left: 5px;
+    display: flex;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 0px !important;
+  }
+  
+  .checkbox-container input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
